@@ -8,7 +8,7 @@ import webdrivertasks.driver.WebDriverSetUp;
 
 public class WebElementWaitingManager {
 
-    private static final int DEFAULT_WAIT_TIMEOUT_SECONDS = 30;
+    private static final int DEFAULT_WAIT_TIMEOUT_SECONDS = 40;
 
     private WebElementWaitingManager() {
     }
