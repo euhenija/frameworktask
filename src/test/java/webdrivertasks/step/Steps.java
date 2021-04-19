@@ -15,15 +15,6 @@ public class Steps {
     private WebDriver driver;
     private CalculatorPage calculatorPage;
     private TenMinuteMailPage tenMinuteMailPage;
-//    private final String OPERATION_SYSTEM = "Free: Debian, CentOS, CoreOS, Ubuntu, or other User Provided OS";
-//    private final String MACHINE_CLASS = "Regular";
-//    private final String MACHINE_TYPE = "e2-standard-8";
-//    private final String DATACENTER_LOCATION = "Frankfurt";
-//    private final String COMMITTED_USAGE = "1 Year";
-//    private final String LOCAL_SSD = "24x375 GB";
-//    public static final String NUMBER_OF_INSTANCES = "4";
-//    public static final String NUMBER_OF_NODES = "1";
-//    public static final String NUMBER_OF_GPUS = "4";
     private final String TEN_MINUTE_MAIL_PAGE_OPENING_SCRIPT = "window.open('https://10minutemail.com/','_blank');";
     private ArrayList<String> tabs;
     private String email;
@@ -69,7 +60,7 @@ public class Steps {
     public Steps startFromCalculatorPage() {
         calculatorPage = new CalculatorPage(driver)
                 .openCalculatorPage()
-                //.clickMessageButton()
+                .clickMessageButton()
                 .inputNumberOfInstances(machine.getNumberOfInstances())
                 .selectOperatingSystem(machine.getOperationSystem())
                 .selectMachineClass(machine.getMachineClass())
@@ -127,7 +118,7 @@ public class Steps {
         return emailResult;
     }
 
-    public boolean checkCostFromEmailAndCalculatorPageAreEqual(String costFromEmail){
+    public boolean checkCostFromEmailAndCalculatorPageAreEqual(String costFromEmail) {
         calculatorPage.switchToInternalFrame();
         return waitForPresenceOfElementLocatedByXpath(FINAL_COST_XPATH).getText().contains(costFromEmail);
     }

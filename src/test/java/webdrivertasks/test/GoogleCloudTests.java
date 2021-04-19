@@ -1,5 +1,6 @@
 package webdrivertasks.test;
 
+import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -7,6 +8,9 @@ import webdrivertasks.driver.WebDriverSetUp;
 import webdrivertasks.page.CalculatorPage;
 import webdrivertasks.step.Steps;
 
+import webdrivertasks.util.TestListener;
+
+@Listeners({TestListener.class})
 public class GoogleCloudTests {
 
     private WebDriver driver;
@@ -14,6 +18,7 @@ public class GoogleCloudTests {
     private final String MACHINE_CLASS = "Regular";
     private final String MACHINE_TYPE = "e2-standard-8";
     private final String MANUALLY_CHECKED_TOTAL_COST = "6,940.38";
+
 
 
     @BeforeClass(alwaysRun = true)
@@ -25,6 +30,7 @@ public class GoogleCloudTests {
 
     @Test
     public void checkHurtMePlentyTask() {
+
         CalculatorPage calculatorPage = step.goToCalculatorPage()
                 .selectEngineProperties()
                 .selectNodeProperties()

@@ -12,7 +12,7 @@ import webdrivertasks.waitings.WebElementWaitingManager;
 import static webdrivertasks.waitings.WebElementWaitingManager.*;
 
 public class CalculatorPage {
-    private WebDriver driver;
+    private final WebDriver driver;
     private static final String EXTERNAL_IFRAME_XPATH = "//devsite-iframe/iframe";
     private static final String FINAL_COST_XPATH = "//b[contains(text(),'Total Estimated Cost')]";
     private static final String EXPANDED_DROPDOWN_TEMPLATE_XPATH = "//div[contains(@class,'clickable')]//div[contains(text(),'%s')]";
@@ -123,14 +123,16 @@ public class CalculatorPage {
     public CalculatorPage selectMachineType(String machineType) {
         waitForVisibilityOfWebElement(machineTypeDropDown);
         machineTypeDropDown.click();
-        waitForPresenceOfElementLocatedByXpath(String.format(EXPANDED_DROPDOWN_TEMPLATE_XPATH, machineType)).click();
+       WebElement type = waitForPresenceOfElementLocatedByXpath(String.format(EXPANDED_DROPDOWN_TEMPLATE_XPATH, machineType));
+       waitForVisibilityOfWebElement(type).click();
         return this;
     }
 
     public CalculatorPage selectDatacenterLocation(String dataCenterLocation) {
         waitForVisibilityOfWebElement(dataCenterLocationDropDown);
         dataCenterLocationDropDown.click();
-        waitForPresenceOfElementLocatedByXpath(String.format(EXPANDED_DROPDOWN_TEMPLATE_XPATH, dataCenterLocation)).click();
+        WebElement element = waitForPresenceOfElementLocatedByXpath(String.format(EXPANDED_DROPDOWN_TEMPLATE_XPATH, dataCenterLocation));
+        waitForVisibilityOfWebElement(element).click();
         return this;
     }
 
@@ -157,7 +159,7 @@ public class CalculatorPage {
     }
 
     public CalculatorPage selectLocalSSD(String localSSD) {
-        waitForVisibilityOfWebElement(localSSDDropDown);
+       waitForElementIsClickable(localSSDDropDown);
         localSSDDropDown.click();
         waitForPresenceOfElementLocatedByXpath(String.format(EXPANDED_DROPDOWN_TEMPLATE_XPATH, localSSD)).click();
         return this;
@@ -189,14 +191,14 @@ public class CalculatorPage {
         return this;
     }
 
-    public CalculatorPage pasteEmail(String email){
+    public CalculatorPage pasteEmail(String email) {
         waitForVisibilityOfWebElement(emailInputArea);
         emailInputArea.click();
         emailInputArea.sendKeys(email);
         return this;
     }
 
-    public CalculatorPage clickButtonToSendEmail(){
+    public CalculatorPage clickButtonToSendEmail() {
         waitForVisibilityOfWebElement(sendEmailButton);
         sendEmailButton.click();
         return this;
