@@ -116,15 +116,16 @@ public class CalculatorPage {
     public CalculatorPage selectMachineClass(String machineClass) {
         waitForVisibilityOfWebElement(machineClassDropDown);
         machineClassDropDown.click();
-        waitForPresenceOfElementLocatedByXpath(String.format(EXPANDED_DROPDOWN_TEMPLATE_XPATH, machineClass)).click();
+        WebElement type = waitForPresenceOfElementLocatedByXpath(String.format(EXPANDED_DROPDOWN_TEMPLATE_XPATH, machineClass));
+        waitForVisibilityOfWebElement(type).click();
         return this;
     }
 
     public CalculatorPage selectMachineType(String machineType) {
         waitForVisibilityOfWebElement(machineTypeDropDown);
         machineTypeDropDown.click();
-       WebElement type = waitForPresenceOfElementLocatedByXpath(String.format(EXPANDED_DROPDOWN_TEMPLATE_XPATH, machineType));
-       waitForVisibilityOfWebElement(type).click();
+        WebElement type = waitForPresenceOfElementLocatedByXpath(String.format(EXPANDED_DROPDOWN_TEMPLATE_XPATH, machineType));
+        waitForVisibilityOfWebElement(type).click();
         return this;
     }
 
@@ -154,12 +155,13 @@ public class CalculatorPage {
     public CalculatorPage selectNumberOfGPUs(String numberOfGPUs) {
         waitForVisibilityOfWebElement(numberOfGPUDropDown);
         numberOfGPUDropDown.click();
-        waitForPresenceOfElementLocatedByXpath(String.format(EXPANDED_DROPDOWN_TEMPLATE_XPATH, numberOfGPUs)).click();
+        WebElement localSSDFromDropdown = waitForPresenceOfElementLocatedByXpath(String.format(EXPANDED_DROPDOWN_TEMPLATE_XPATH, numberOfGPUs));
+        waitForVisibilityOfWebElement(localSSDFromDropdown).click();
         return this;
     }
 
     public CalculatorPage selectLocalSSD(String localSSD) {
-       waitForElementIsClickable(localSSDDropDown);
+        waitForElementIsClickable(localSSDDropDown);
         localSSDDropDown.click();
         waitForPresenceOfElementLocatedByXpath(String.format(EXPANDED_DROPDOWN_TEMPLATE_XPATH, localSSD)).click();
         return this;

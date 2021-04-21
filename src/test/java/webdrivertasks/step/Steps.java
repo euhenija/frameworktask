@@ -24,19 +24,11 @@ public class Steps {
 
     public Steps(WebDriver driver) {
         this.driver = driver;
-        machine = new Machine.MachineBuilder()
-                .withNumberOfInstances("4")
-                .withOperationSystem("Free: Debian, CentOS, CoreOS, Ubuntu, or other User Provided OS")
-                .withClass("Regular")
-                .withType("e2-standard-8")
-                .withDataCenterLocation("Frankfurt")
-                .withCommitedUsage("1 Year")
-                .withNumberOfNodes("1")
-                .withNumberOfGPU("4")
-                .withLocalSSD("24x375 GB").build();
+        machine = Machine.withParametersFromProperty();
     }
 
     public Steps goToCalculatorPage() {
+
         new GoogleCloudHomePage(driver)
                 .openPage()
                 .pasteAndSearch("Google Cloud Platform Pricing Calculator")
@@ -46,6 +38,7 @@ public class Steps {
     }
 
     public Steps selectEngineProperties() {
+        System.out.println(machine.toString());
         calculatorPage = new CalculatorPage(driver)
                 //.clickMessageButton()
                 .inputNumberOfInstances(machine.getNumberOfInstances())
@@ -60,7 +53,7 @@ public class Steps {
     public Steps startFromCalculatorPage() {
         calculatorPage = new CalculatorPage(driver)
                 .openCalculatorPage()
-                .clickMessageButton()
+                //.clickMessageButton()
                 .inputNumberOfInstances(machine.getNumberOfInstances())
                 .selectOperatingSystem(machine.getOperationSystem())
                 .selectMachineClass(machine.getMachineClass())

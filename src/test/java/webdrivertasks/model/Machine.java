@@ -1,5 +1,6 @@
 package webdrivertasks.model;
 
+import webdrivertasks.service.TestDataReader;
 import java.util.Objects;
 
 public class Machine {
@@ -12,6 +13,15 @@ public class Machine {
     private String numberOfNodes;
     private String numberOfGPU;
     private String localSSD;
+    private static final String OPERATION_SYSTEM = "machine.operationsystem";
+    private static final String MACHINE_CLASS = "machine.class";
+    private static final String MACHINE_TYPE = "machine.type";
+    private static final String DATACENTER_LOCATION = "machine.location";
+    private static final String COMMITTED_USAGE = "machine.commitedusage";
+    private static final String LOCAL_SSD = "machine.localssd";
+    public static final String NUMBER_OF_INSTANCES = "machine.numberofinstances";
+    public static final String NUMBER_OF_NODES = "machine.numberofnodes";
+    public static final String NUMBER_OF_GPUS = "machine.numberofgpu";
 
     public String getLocalSSD() {
         return localSSD;
@@ -48,58 +58,72 @@ public class Machine {
     public String getNumberOfGPU() {
         return numberOfGPU;
     }
-    public static class MachineBuilder{
+
+    public static class MachineBuilder {
 
         private Machine newMachine = new Machine();
 
-        public MachineBuilder withNumberOfInstances(String numberOfInstances){
+        public MachineBuilder withNumberOfInstances(String numberOfInstances) {
             newMachine.numberOfInstances = numberOfInstances;
             return this;
         }
 
-        public MachineBuilder withOperationSystem (String operationSystem){
+        public MachineBuilder withOperationSystem(String operationSystem) {
             newMachine.operationSystem = operationSystem;
             return this;
         }
 
-        public MachineBuilder withClass(String machineClass){
+        public MachineBuilder withClass(String machineClass) {
             newMachine.machineClass = machineClass;
             return this;
         }
 
-        public MachineBuilder withType(String machineType){
+        public MachineBuilder withType(String machineType) {
             newMachine.machineType = machineType;
             return this;
         }
 
-        public MachineBuilder withDataCenterLocation (String dataCenterLocation){
+        public MachineBuilder withDataCenterLocation(String dataCenterLocation) {
             newMachine.dataCenterLocation = dataCenterLocation;
             return this;
         }
 
-        public MachineBuilder withCommitedUsage (String commitedUsage){
+        public MachineBuilder withCommitedUsage(String commitedUsage) {
             newMachine.commitedUsage = commitedUsage;
             return this;
         }
 
-        public MachineBuilder withNumberOfNodes (String numberOfNodes){
+        public MachineBuilder withNumberOfNodes(String numberOfNodes) {
             newMachine.numberOfNodes = numberOfNodes;
             return this;
         }
 
-        public MachineBuilder withNumberOfGPU (String numberOfGPU){
+        public MachineBuilder withNumberOfGPU(String numberOfGPU) {
             newMachine.numberOfGPU = numberOfGPU;
             return this;
         }
 
-        public MachineBuilder withLocalSSD(String localSSD){
+        public MachineBuilder withLocalSSD(String localSSD) {
             newMachine.localSSD = localSSD;
             return this;
         }
 
-        public Machine build(){
+        public Machine build() {
             return newMachine;
         }
+    }
+
+    public static Machine withParametersFromProperty() {
+        return new Machine.MachineBuilder()
+                .withNumberOfInstances(TestDataReader.getTestData(NUMBER_OF_INSTANCES))
+                .withOperationSystem(TestDataReader.getTestData(OPERATION_SYSTEM))
+                .withClass(TestDataReader.getTestData(MACHINE_CLASS))
+                .withType(TestDataReader.getTestData(MACHINE_TYPE))
+                .withDataCenterLocation(TestDataReader.getTestData(DATACENTER_LOCATION))
+                .withCommitedUsage(TestDataReader.getTestData(COMMITTED_USAGE))
+                .withNumberOfNodes(TestDataReader.getTestData(NUMBER_OF_NODES))
+                .withNumberOfGPU(TestDataReader.getTestData(NUMBER_OF_GPUS))
+                .withLocalSSD(TestDataReader.getTestData(LOCAL_SSD)).build();
     }
 
     @Override

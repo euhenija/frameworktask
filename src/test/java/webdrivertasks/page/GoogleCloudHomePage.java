@@ -32,13 +32,13 @@ public class GoogleCloudHomePage {
         return this;
     }
 
-    public GoogleCloudHomePage pasteAndSearch (String searchText){
+    public GoogleCloudHomePage pasteAndSearch(String searchText) {
         searchArea.click();
         searchArea.sendKeys(searchText);
         return this;
     }
 
-    public CalculatorSearchResultsPage searchAskedCalculator(){
+    public CalculatorSearchResultsPage searchAskedCalculator() {
         waitForElementIsClickable(searchSubmitButton);
         searchSubmitButton.click();
         return new CalculatorSearchResultsPage(driver);

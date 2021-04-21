@@ -18,10 +18,10 @@ public class CalculatorSearchResultsPage {
         PageFactory.initElements(driver, this);
     }
 
-    public CalculatorPage goToCalculatorPage(){
+    public CalculatorPage goToCalculatorPage() {
         WebElementWaitingManager.waitForVisibilityOfWebElement(calculatorPageLink);
         calculatorPageLink.click();
-       return new CalculatorPage(driver);
+        return new CalculatorPage(driver);
     }
 
 }
