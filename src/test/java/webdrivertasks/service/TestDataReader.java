@@ -9,4 +9,3 @@ public class TestDataReader {
         return resourceBundle.getString(key);
     }
 }
-

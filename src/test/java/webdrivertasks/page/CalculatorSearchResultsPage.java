@@ -23,5 +23,4 @@ public class CalculatorSearchResultsPage {
         calculatorPageLink.click();
         return new CalculatorPage(driver);
     }
-
 }

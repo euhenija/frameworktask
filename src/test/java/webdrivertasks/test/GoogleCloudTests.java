@@ -18,7 +18,6 @@ public class GoogleCloudTests {
     private final String REQUIRED_MACHINE_TYPE = "e2-standard-8";
     private final String MANUALLY_CHECKED_TOTAL_COST = "6,940.38";
 
-
     @BeforeClass(alwaysRun = true)
     public void browserSetup() {
         driver = WebDriverSetUp.getDriver();

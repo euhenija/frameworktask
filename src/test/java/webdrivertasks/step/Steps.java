@@ -21,7 +21,6 @@ public class Steps {
     private static final String FINAL_COST_XPATH = "//b[contains(text(),'Total Estimated Cost')]";
     private Machine machine;
 
-
     public Steps(WebDriver driver) {
         this.driver = driver;
         machine = Machine.withParametersFromProperty();
@@ -40,7 +39,6 @@ public class Steps {
     public Steps selectEngineProperties() {
         System.out.println(machine.toString());
         calculatorPage = new CalculatorPage(driver)
-                //.clickMessageButton()
                 .inputNumberOfInstances(machine.getNumberOfInstances())
                 .selectOperatingSystem(machine.getOperationSystem())
                 .selectMachineClass(machine.getMachineClass())
@@ -53,7 +51,6 @@ public class Steps {
     public Steps startFromCalculatorPage() {
         calculatorPage = new CalculatorPage(driver)
                 .openCalculatorPage()
-                //.clickMessageButton()
                 .inputNumberOfInstances(machine.getNumberOfInstances())
                 .selectOperatingSystem(machine.getOperationSystem())
                 .selectMachineClass(machine.getMachineClass())
@@ -115,5 +112,4 @@ public class Steps {
         calculatorPage.switchToInternalFrame();
         return waitForPresenceOfElementLocatedByXpath(FINAL_COST_XPATH).getText().contains(costFromEmail);
     }
-
 }

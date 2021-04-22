@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import webdrivertasks.page.PastebinHomePage;
 
-
 public class WebDriverPastebinHomePageTest {
     private final String DISPLAYED_BASH_OPTION_LOCATOR = "//a[text()='Bash']";
     private SavedPasteBinPage savedPastebin;
@@ -51,5 +50,4 @@ public class WebDriverPastebinHomePageTest {
         driver.quit();
         driver = null;
     }
-
 }

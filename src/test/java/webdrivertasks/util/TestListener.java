@@ -38,7 +38,7 @@ public class TestListener implements ITestListener {
     }
 
     private String getCurrentTimeAsString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd_HH-mm-ss");
-        return ZonedDateTime.now().format(formatter);
+        final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("uuuu-MM-dd_HH-mm-ss");
+        return ZonedDateTime.now().format(FORMATTER);
     }
 }

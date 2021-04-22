@@ -13,15 +13,15 @@ public class Machine {
     private String numberOfNodes;
     private String numberOfGPU;
     private String localSSD;
-    private static final String OPERATION_SYSTEM = "machine.operationsystem";
-    private static final String MACHINE_CLASS = "machine.class";
-    private static final String MACHINE_TYPE = "machine.type";
-    private static final String DATACENTER_LOCATION = "machine.location";
-    private static final String COMMITTED_USAGE = "machine.commitedusage";
-    private static final String LOCAL_SSD = "machine.localssd";
-    public static final String NUMBER_OF_INSTANCES = "machine.numberofinstances";
-    public static final String NUMBER_OF_NODES = "machine.numberofnodes";
-    public static final String NUMBER_OF_GPUS = "machine.numberofgpu";
+    private static final String OPERATION_SYSTEM_PROPERTY = "machine.operationsystem";
+    private static final String MACHINE_CLASS_PROPERTY = "machine.class";
+    private static final String MACHINE_TYPE_PROPERTY = "machine.type";
+    private static final String DATACENTER_LOCATION_PROPERTY = "machine.location";
+    private static final String COMMITTED_USAGE_PROPERTY = "machine.commitedusage";
+    private static final String LOCAL_SSD_PROPERTY = "machine.localssd";
+    public static final String NUMBER_OF_INSTANCES_PROPERTY = "machine.numberofinstances";
+    public static final String NUMBER_OF_NODES_PROPERTY = "machine.numberofnodes";
+    public static final String NUMBER_OF_GPUS_PROPERTY = "machine.numberofgpu";
 
     public String getLocalSSD() {
         return localSSD;
@@ -115,15 +115,15 @@ public class Machine {
 
     public static Machine withParametersFromProperty() {
         return new Machine.MachineBuilder()
-                .withNumberOfInstances(TestDataReader.getTestData(NUMBER_OF_INSTANCES))
-                .withOperationSystem(TestDataReader.getTestData(OPERATION_SYSTEM))
-                .withClass(TestDataReader.getTestData(MACHINE_CLASS))
-                .withType(TestDataReader.getTestData(MACHINE_TYPE))
-                .withDataCenterLocation(TestDataReader.getTestData(DATACENTER_LOCATION))
-                .withCommitedUsage(TestDataReader.getTestData(COMMITTED_USAGE))
-                .withNumberOfNodes(TestDataReader.getTestData(NUMBER_OF_NODES))
-                .withNumberOfGPU(TestDataReader.getTestData(NUMBER_OF_GPUS))
-                .withLocalSSD(TestDataReader.getTestData(LOCAL_SSD)).build();
+                .withNumberOfInstances(TestDataReader.getTestData(NUMBER_OF_INSTANCES_PROPERTY))
+                .withOperationSystem(TestDataReader.getTestData(OPERATION_SYSTEM_PROPERTY))
+                .withClass(TestDataReader.getTestData(MACHINE_CLASS_PROPERTY))
+                .withType(TestDataReader.getTestData(MACHINE_TYPE_PROPERTY))
+                .withDataCenterLocation(TestDataReader.getTestData(DATACENTER_LOCATION_PROPERTY))
+                .withCommitedUsage(TestDataReader.getTestData(COMMITTED_USAGE_PROPERTY))
+                .withNumberOfNodes(TestDataReader.getTestData(NUMBER_OF_NODES_PROPERTY))
+                .withNumberOfGPU(TestDataReader.getTestData(NUMBER_OF_GPUS_PROPERTY))
+                .withLocalSSD(TestDataReader.getTestData(LOCAL_SSD_PROPERTY)).build();
     }
 
     @Override

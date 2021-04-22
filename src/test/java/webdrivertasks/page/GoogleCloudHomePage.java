@@ -44,5 +44,3 @@ public class GoogleCloudHomePage {
         return new CalculatorSearchResultsPage(driver);
     }
 }
-
-
